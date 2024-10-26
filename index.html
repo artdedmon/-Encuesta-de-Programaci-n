@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue3.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Encuesta de Programación</title>
+</head>
+<body>
+    <section id="encuesta">
+        <article>
+            <h1>¿Te gusta la programación?</h1>
+            <span>
+                <input type="radio" name="inicio" @click="cambiar(true)">Sí
+                <input type="radio" name="inicio" @click="cambiar(false)">No
+            </span>
+            <span v-if="mostrar === true">
+                <br>¿Cuántos años llevas programando?
+                <br><input type="number" v-model="numero" @input="texto">
+                <span v-if="edad">
+                    <h2>Cuéntanos más sobre tu experiencia:</h2>
+                    <input type="text" v-model="experiencia">
+                </span>
+                <br>Dime, ¿cuáles son los lenguajes de programación que conoces?
+                <br><input type="text" v-model="dulce">
+                <br><button @click="agregar">Agregar</button>
+                <div v-for="lista in conjunto" :key="lista">{{ lista }}</div>
+            </span>
+            <span v-if="mostrar === false">
+                <p>OK, muchas gracias por responder, bonito día.</p>
+            </span>
+        </article>
+    </section>
+    <script src="formulario.js"></script>
+</body>
+</html>
